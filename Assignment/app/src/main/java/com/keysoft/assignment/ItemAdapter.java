@@ -25,10 +25,12 @@ public class ItemAdapter extends RecyclerView.Adapter {
         this.activity = activity;
         this.listItem = listItem;
     }
-    public void reloadData(List<Item> list){
+
+    public void reloadData(List<Item> list) {
         listItem = list;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,12 +44,12 @@ public class ItemAdapter extends RecyclerView.Adapter {
         ItemHolder itemHolder = (ItemHolder) holder;
         Item model = listItem.get(position);
         itemHolder.tvHour.setText(convertTime(model.getDateTime()));
-        itemHolder.tvTemp.setText(model.getTemperature().getValue()+"");
-        if(model.getWeatherIcon() < 10){
-            Glide.with(activity).load("https://developer.accuweather.com/sites/default/files/0"+model.getWeatherIcon()+"-s.png"
+        itemHolder.tvTemp.setText(model.getTemperature().getValue() + "");
+        if (model.getWeatherIcon() < 10) {
+            Glide.with(activity).load("https://developer.accuweather.com/sites/default/files/0" + model.getWeatherIcon() + "-s.png"
             ).into(itemHolder.ivICon);
-        }else{
-            Glide.with(activity).load("https://developer.accuweather.com/sites/default/files/"+model.getWeatherIcon()+"-s.png"
+        } else {
+            Glide.with(activity).load("https://developer.accuweather.com/sites/default/files/" + model.getWeatherIcon() + "-s.png"
             ).into(itemHolder.ivICon);
         }
 
@@ -60,9 +62,10 @@ public class ItemAdapter extends RecyclerView.Adapter {
 
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder{
+    public class ItemHolder extends RecyclerView.ViewHolder {
         ImageView ivICon;
         TextView tvTemp, tvHour;
+
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             ivICon = itemView.findViewById(R.id.ivIcon);
@@ -70,6 +73,7 @@ public class ItemAdapter extends RecyclerView.Adapter {
             tvHour = itemView.findViewById(R.id.tvHour);
         }
     }
+
     public String convertTime(String inputTime) {
         SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         Date date = null;

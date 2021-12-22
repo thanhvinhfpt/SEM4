@@ -56,7 +56,8 @@ public class FeedBack {
     public void setSpinner(String spinner) {
         this.spinner = spinner;
     }
-    public FeedBack(){
+
+    public FeedBack() {
 
     }
 

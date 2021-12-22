@@ -5,6 +5,7 @@ public class Item {
     private int WeatherIcon;
     private Temperature Temperature;
     private String IconPhrase;
+
     public String getDateTime() {
         return DateTime;
     }

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CheckBox checkBox;
     Button btSendFeedback;
     AppDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-
-    private void innit(){
+    private void innit() {
         edUsername = findViewById(R.id.edUsername);
         edContent = findViewById(R.id.edContent);
         edEmail = findViewById(R.id.edEmail);
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btSendFeedback = findViewById(R.id.btSendFeedback);
         btSendFeedback.setOnClickListener(this);
         String[] genders = {"Gripe", "Gripe 1", "Gripe 2"};
-        ArrayAdapter<String> adapter =  new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genders);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genders);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -59,25 +58,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view == btSendFeedback){
+        if (view == btSendFeedback) {
             onSendFeedBack();
         }
     }
 
-    private void onSendFeedBack(){
+    private void onSendFeedBack() {
         String username = edUsername.getText().toString();
-        String content =  edContent.getText().toString();
+        String content = edContent.getText().toString();
         String email = edEmail.getText().toString();
         String spinner1 = spinner.getSelectedItem().toString();
-        if(username.isEmpty()){
+        if (username.isEmpty()) {
             Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show();
             return;
         }
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
             return;
         }
-        if(content.isEmpty()){
+        if (content.isEmpty()) {
             Toast.makeText(this, "Please enter your feedback", Toast.LENGTH_LONG).show();
             return;
         }

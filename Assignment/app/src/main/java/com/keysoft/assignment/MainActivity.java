@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Item> listItem = new ArrayList<>();
     ItemAdapter adapter;
     TextView tvIconPhrase, tvTempHanoi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +38,16 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ItemAdapter(this, listItem);
 
         //layout manager
-        RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
 
         //Recycle view
-        RecyclerView rvItem =  findViewById(R.id.rvItem);
+        RecyclerView rvItem = findViewById(R.id.rvItem);
         rvItem.setLayoutManager(layoutManager);
         rvItem.setAdapter(adapter);
 
     }
 
-    private void getDatas(){
+    private void getDatas() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://dataservice.accuweather.com/forecasts/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -57,9 +58,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
                 listItem = response.body();
                 tvIconPhrase.setText(listItem.get(0).getIconPhrase());
-                tvTempHanoi.setText(listItem.get(0).getTemperature().getValue()+"");
+                tvTempHanoi.setText(listItem.get(0).getTemperature().getValue() + "");
                 adapter.reloadData(listItem);
             }
+
             @Override
             public void onFailure(Call<List<Item>> call, Throwable t) {
 

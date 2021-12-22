@@ -13,6 +13,7 @@ public class ListFeedBackActivity extends AppCompatActivity {
     AppDatabase db;
     List<FeedBack> listFeedback = new ArrayList<>();
     FeedBackAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +27,15 @@ public class ListFeedBackActivity extends AppCompatActivity {
         super.onResume();
         showList();
     }
-    private void showList(){
+
+    private void showList() {
         db = AppDatabase.getAppDatabase(this);
 
         //get all data
         getData();
 
         //Adapter
-        adapter = new FeedBackAdapter(this , listFeedback);
+        adapter = new FeedBackAdapter(this, listFeedback);
 
         //layout manager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
@@ -43,7 +45,8 @@ public class ListFeedBackActivity extends AppCompatActivity {
         rvItem.setLayoutManager(layoutManager);
         rvItem.setAdapter(adapter);
     }
-    private void getData(){
+
+    private void getData() {
         listFeedback = db.feedBackDao().listFeedBack();
     }
 }

@@ -33,7 +33,7 @@ public class FeedBackAdapter extends RecyclerView.Adapter {
         FeedBack model = listFeedback.get(position);
         itemHolder.tvName.setText(model.getName());
         itemHolder.tvEmail.setText(model.getEmail());
-        itemHolder.tvId.setText(model.getId()+"");
+        itemHolder.tvId.setText(model.getId() + "");
         itemHolder.tvContent.setText(model.getContent());
     }
 
@@ -42,9 +42,10 @@ public class FeedBackAdapter extends RecyclerView.Adapter {
         return listFeedback.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder{
+    public class ItemHolder extends RecyclerView.ViewHolder {
 
         TextView tvName, tvEmail, tvId, tvContent;
+
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
